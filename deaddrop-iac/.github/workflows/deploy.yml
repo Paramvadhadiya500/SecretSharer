@@ -1,0 +1,40 @@
+name: Deploy Serverless Backend to AWS
+
+# 1. When should the robot wake up?
+on:
+  push:
+    branches:
+      - main
+
+# 2. What permissions does the robot need?
+permissions:
+  id-token: write # 👈 THIS IS THE MAGIC OIDC HANDSHAKE!
+  contents: read  # Allows the robot to read your code
+
+jobs:
+  deploy:
+    name: Deploy to AWS
+    runs-on: ubuntu-latest # The robot's operating system
+
+    steps:
+      - name: 📥 Download Code
+        uses: actions/checkout@v4
+
+      - name: 🔐 Authenticate with AWS (Keyless OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::325725540872:role/GitHubActions-ServerlessDeploy
+          aws-region: ap-south-1
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🛠️ Install Serverless V3 & Dependencies
+        run: |
+          npm install -g serverless@3
+          npm install
+
+      - name: 🚀 Deploy to AWS
+        run: serverless deploy
