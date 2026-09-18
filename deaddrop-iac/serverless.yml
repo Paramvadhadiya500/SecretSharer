@@ -20,8 +20,8 @@ provider:
           Action:
             - s3:*
           Resource:
-            - arn:aws:s3:::secret-sharer-files-param-123
-            - arn:aws:s3:::secret-sharer-files-param-123/*
+            - arn:aws:s3:::secretsharer-1-param
+            - arn:aws:s3:::secretsharer-1-param/*
         # 🛡️ Give Lambda permission to fire off Emails
         - Effect: Allow
           Action:

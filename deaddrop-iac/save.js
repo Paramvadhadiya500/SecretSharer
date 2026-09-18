@@ -7,7 +7,7 @@ import crypto from "crypto";
 const dbClient = new DynamoDBClient({ region: "ap-south-1" });
 const docClient = DynamoDBDocumentClient.from(dbClient);
 const s3Client = new S3Client({ region: "ap-south-1" });
-const BUCKET_NAME = "secret-sharer-files-param-123";
+const BUCKET_NAME = "secretsharer-1-param";
 
 export const handler = async (event) => {
     try {

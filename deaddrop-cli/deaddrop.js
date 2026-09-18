@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 
-const API_URL = "https://kakhkdaxj2.execute-api.ap-south-1.amazonaws.com/dev/v2/complete";
+const API_URL = "https://t6g0et1whj.execute-api.ap-south-1.amazonaws.com/dev/v2/complete";
 const FRONTEND_URL = "http://localhost:3000"; 
 
 async function runCLI() {

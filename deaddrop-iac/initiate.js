@@ -3,7 +3,7 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import crypto from "crypto";
 
 const s3Client = new S3Client({ region: "ap-south-1" });
-const BUCKET_NAME = "secret-sharer-files-param-123";
+const BUCKET_NAME = "secretsharer-1-param";
 
 export const handler = async (event) => {
     try {

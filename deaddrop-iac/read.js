@@ -4,7 +4,7 @@ const s3 = new AWS.S3();
 const sns = new AWS.SNS(); // 👈 NEW: Bring in the SNS Engine
 
 const TABLE_NAME = "SecretSharer-v2";
-const BUCKET_NAME = "secret-sharer-files-param-123";
+const BUCKET_NAME = "secretsharer-1-param";
 
 exports.handler = async (event) => {
     const corsHeaders = {

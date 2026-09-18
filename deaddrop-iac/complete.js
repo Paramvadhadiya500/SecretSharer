@@ -3,7 +3,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 const s3 = new AWS.S3();
 
 const TABLE_NAME = "SecretSharer-v2";
-const BUCKET_NAME = "secret-sharer-files-param-123";
+const BUCKET_NAME = "secretsharer-1-param";
 
 exports.handler = async (event) => {
     const corsHeaders = {
@@ -30,11 +30,11 @@ exports.handler = async (event) => {
 
         const item = {
             secretId: finalId,
-            secretData: body.secretData || " ",
+            secretData: body.secretData || body.secret || " ",
             hasFile: body.hasFile || false,
             userEmail: body.userEmail || "anonymous",
             viewsRemaining: body.maxViews ? parseInt(body.maxViews) : 1,
-            wantsAlert: body.wantsAlert || false,
+            wantsAlert: body.sendAlert || body.wantsAlert || false,
             createdAt: new Date().toISOString()
          
         };
